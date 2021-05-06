@@ -2,8 +2,8 @@
   "BitcoinBTC": {
     "name": "Bitcoin",
     "symbol": "BTC",
-    "upper_cap": 50000,
-    "lower_cap": 45000
+    "upper_cap": 47450.50,
+    "lower_cap": 47450.50
   },
   "EthereumETH": {
     "name": "Ethereum",
