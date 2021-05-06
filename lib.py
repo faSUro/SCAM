@@ -1,3 +1,6 @@
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
@@ -46,3 +49,24 @@ def scrape_page(url):
                 crypto_data.append([cols[0], cols[1]])
 
     return crypto_data
+
+
+scam_mail = 'noreply.scam.alert@gmail.com'
+scam_password = 'rCbExThaHRmpa42'
+user_mail = 'fasulo.nicol@gmail.com'
+
+
+def send_alert_mail(message):
+    msg = MIMEMultipart()
+
+    msg['From'] = scam_mail
+    msg['To'] = user_mail
+    msg['Subject'] = 'SCAM PRICE ALERT'
+
+    msg.attach(MIMEText(message, 'plain'))
+
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+    server.ehlo()
+    server.login(scam_mail, scam_password)
+    server.send_message(msg)
+    server.close()

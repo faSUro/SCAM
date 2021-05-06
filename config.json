@@ -8,7 +8,7 @@
   "EthereumETH": {
     "name": "Ethereum",
     "symbol": "ETH",
-    "upper_cap": 2000,
-    "lower_cap": 1000
+    "upper_cap": 4000,
+    "lower_cap": 1
   }
 }

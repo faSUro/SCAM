@@ -1,5 +1,6 @@
 import time
 import lib
+import smtplib
 
 crypto_info = lib.get_crypto_info()
 
@@ -17,11 +18,13 @@ while True:
                   '€' + price_data[0].strip(), price_data[1])
 
             if fl_price < crypto_info[ele[0]]['lower_cap']:
-                print("ALERT: " + crypto_info[ele[0]]['name'] + " WENT UNDER €" + str(
-                    "{:.2f}".format(crypto_info[ele[0]]['lower_cap'])))
+                message = "ALERT: " + crypto_info[ele[0]]['name'] + " WENT UNDER " + str(
+                    "{:.2f}".format(crypto_info[ele[0]]['lower_cap']) + " EUR")
+                lib.send_alert_mail(message)
             if fl_price > crypto_info[ele[0]]['upper_cap']:
-                print("ALERT: " + crypto_info[ele[0]]['name'] + " WENT OVER €" + str(
-                    "{:.2f}".format(crypto_info[ele[0]]['upper_cap'])))
+                message = "ALERT: " + crypto_info[ele[0]]['name'] + " WENT OVER " + str(
+                    "{:.2f}".format(crypto_info[ele[0]]['upper_cap']) + " EUR")
+                lib.send_alert_mail(message)
 
     crypto_data = lib.scrape_page(lib.coinbase_page2)
     if len(crypto_data) > 0:
@@ -36,10 +39,12 @@ while True:
                   '€' + price_data[0].strip(), price_data[1])
 
             if fl_price < crypto_info[ele[0]]['lower_cap']:
-                print("ALERT: " + crypto_info[ele[0]]['name'] + " WENT UNDER €" + str(
-                    "{:.2f}".format(crypto_info[ele[0]]['lower_cap'])))
+                message = "ALERT: " + crypto_info[ele[0]]['name'] + " WENT UNDER " + str(
+                    "{:.2f}".format(crypto_info[ele[0]]['lower_cap']) + " EUR")
+                lib.send_alert_mail(message)
             if fl_price > crypto_info[ele[0]]['upper_cap']:
-                print("ALERT: " + crypto_info[ele[0]]['name'] + " WENT OVER €" + str(
-                    "{:.2f}".format(crypto_info[ele[0]]['upper_cap'])))
+                message = "ALERT: " + crypto_info[ele[0]]['name'] + " WENT OVER " + str(
+                    "{:.2f}".format(crypto_info[ele[0]]['upper_cap']) + " EUR")
+                lib.send_alert_mail(message)
 
     time.sleep(lib.refresh_rate)
