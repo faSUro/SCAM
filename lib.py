@@ -10,7 +10,7 @@ import lib
 
 
 config_file = "config.json"
-refresh_rate = 90
+refresh_rate = 30
 coinbase_page1 = "https://www.coinbase.com/it/price/s/listed"
 coinbase_page2 = "https://www.coinbase.com/it/price/s/listed?page=2"
 
