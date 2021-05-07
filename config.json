@@ -3,7 +3,7 @@
     "name": "Bitcoin",
     "symbol": "BTC",
     "upper_cap": 48500,
-    "lower_cap": 45000.50
+    "lower_cap": 45000
   },
   "EthereumETH": {
     "name": "Ethereum",
@@ -14,8 +14,8 @@
   "LitecoinLTC": {
     "name": "Litecoin",
     "symbol": "LTC",
-    "upper_cap": 170,
-    "lower_cap": 300
+    "upper_cap": 290,
+    "lower_cap": 170
   },
   "CardanoADA": {
     "name": "Cardano",

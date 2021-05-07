@@ -1,3 +1,4 @@
+import datetime
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -14,13 +15,21 @@ refresh_rate = 60
 coinbase_page1 = "https://www.coinbase.com/it/price/s/listed"
 coinbase_page2 = "https://www.coinbase.com/it/price/s/listed?page=2"
 
+data = {}
 interesting_crypto = []
+mail_tracker = {}
 
 
 def get_crypto_info():
-    data = json.load(open(config_file))
+    lib.data = json.load(open(config_file))
     lib.interesting_crypto = list(data.keys())
-    return data
+    return lib.data
+
+
+def init_mail_tracker():
+    init_date = datetime.datetime(1970, 1, 1)
+    for crypto in lib.interesting_crypto:
+        mail_tracker[crypto] = init_date
 
 
 options = Options()
@@ -70,3 +79,21 @@ def send_alert_mail(message):
     server.login(scam_mail, scam_password)
     server.send_message(msg)
     server.close()
+
+
+def check_last_mail(crypto):
+    last_mail = mail_tracker[crypto]
+    now = datetime.datetime.now()
+    time_since_last_mail = now - last_mail
+    tslm_in_seconds = time_since_last_mail.total_seconds()
+    tslm_in_minutes = divmod(tslm_in_seconds, 60)[0]
+    if tslm_in_minutes >= 60:
+        return True
+    else:
+        return False
+
+
+def refresh_last_mail(crypto):
+    now = datetime.datetime.now()
+    mail_tracker[crypto] = now
+    return None
